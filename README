@@ -1,0 +1,15 @@
+Dokumentaatio osa 1
+
+Aihe: Peli -"korttipeli"
+Käyttäjät: Pelaaja ja tietokonevastus
+
+Pelaajan toiminnot:
+-aloittaa uusipeli
+-lopettaa peli
+
+Kaikkien toiminnot:
+-pelata kortti
+-hylätä kortti
+-nostaa kortti
+	-onnistuu jos vuorossa olevalla ei ole max. määrää kortteja kädessä
+
