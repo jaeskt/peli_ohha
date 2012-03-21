@@ -12,28 +12,28 @@ import static org.junit.Assert.*;
  * @author timojaas
  */
 public class pelinAloitusTest {
-    
-    public pelinAloitusTest() {
-    }
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
+    pelaaja ihminen;
+    pelaaja tietokone;
     
     @Before
     public void setUp() {
+        ihminen = new pelaaja(35);
+        tietokone = new pelaaja(5);
+        
     }
     
-    @After
-    public void tearDown() {
+    @Test
+    public void pelaajienKestot() {   
+        assertEquals(30, ihminen.getHP());
+        assertEquals(5, tietokone.getHP());
+        //tarkistaa että kestot eivät voi mennä ylitse 30
+        //tarkistaa että antaa toiselle pelaajalle oikeat kestot.
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+       @Test
+    public void korttienLukumaaraOikea() {   
+        assertEquals(5, ihminen.getKorttiMaara());
+        //tarkistaa että pelaajalla on viisikorttiakäytössä
+
+    }
 }
