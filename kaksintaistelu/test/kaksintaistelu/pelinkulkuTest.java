@@ -13,27 +13,19 @@ import static org.junit.Assert.*;
  */
 public class pelinkulkuTest {
     
-    public pelinkulkuTest() {
-    }
+    pelaaja ihminen;
+    pelaaja tietokone;
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-    
     @Before
     public void setUp() {
+        ihminen = new ihmisPelaaja(35);
+        tietokone = new tietokonePelaaja(5);
+
     }
+
+    //@Test
+    public void molemmatOttavatTietynKortin() {
+    assertEquals(1,ihminen.pelaaKortti(1));
+    assertEquals(3,ihminen.pelaaKortti(3));}
     
-    @After
-    public void tearDown() {
-    }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
