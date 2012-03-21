@@ -15,25 +15,27 @@ public class pelinAloitusTest {
 
     pelaaja ihminen;
     pelaaja tietokone;
-    
+
     @Before
     public void setUp() {
         ihminen = new pelaaja(35);
         tietokone = new pelaaja(5);
-        
+
     }
-    
+
     @Test
-    public void pelaajienKestot() {   
-        assertEquals(30, ihminen.getHP());
+    public void pelaajienKestot() {
+        assertEquals(20, ihminen.getHP());
         assertEquals(5, tietokone.getHP());
         //tarkistaa että kestot eivät voi mennä ylitse 30
         //tarkistaa että antaa toiselle pelaajalle oikeat kestot.
     }
-       @Test
-    public void korttienLukumaaraOikea() {   
+
+    @Test
+    public void korttienLukumaaraOikea() {
+        assertEquals(5, tietokone.getKorttiMaara());
         assertEquals(5, ihminen.getKorttiMaara());
-        //tarkistaa että pelaajalla on viisikorttiakäytössä
+        //tarkistaa että molemmilla on alussa viisi korttia
 
     }
 }

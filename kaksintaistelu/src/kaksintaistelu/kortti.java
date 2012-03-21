@@ -11,5 +11,8 @@ package kaksintaistelu;
  */
 // Timo Jääskeläinen Tehtävä #.# Viikko #
 public class kortti {
+    
+    public kortti(){
+    }
 
 }

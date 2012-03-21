@@ -1,16 +1,28 @@
-Dokumentaatio osa 1
+Kaksintaistelut dokumentaatiota
 
-Aihe: Peli -"korttipeli"
+Aihe: Peli -Kaksintaistelu "korteilla"
+
 Käyttäjät: Pelaaja ja tietokonevastus
 
 Pelaajan toiminnot:
 -aloittaa uusipeli
+	-luo pelaajan ja tietokonevastuksen määrätyillä kestoilla (max. 20) 		 ja nostaa molemmille viisi korttia käteen.
+ 	-Pystyy suorittamaan kesken pelin, mutta kysyy aina varmistuksen.
+
 -lopettaa peli
+	-Sammuttaa ohjelman
 
 Kaikkien toiminnot:
 -pelata kortti
--hylätä kortti
--nostaa kortti
-	-onnistuu jos vuorossa olevalla ei ole max. määrää kortteja kädessä
-Päivitetty 20-3-2012 klo 1.44
+        -nostaa kortti käden tämän jälkeen täyteen.
+
+Pelin kulku:
+	-pelaaja valitsee kortin, jonka jälkeen tietokone vastus valitsee  		 kortin (tietämättä periaatteessa minkä kortin vastustaja valitsee)
+	-kortit tapahtuvat( kivi,sakset,paperi periaatteella)
+	-tarkistetaan että kumpikaan ei ole kuollut
+	-uusikierros
+
+
+	
+Päivitetty 21-3-2012 klo 13.04
 
