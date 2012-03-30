@@ -1,6 +1,7 @@
 package kaksintaistelu;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import javax.swing.*;
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ public class Kaksintaistelu {
     Scanner lukija = new Scanner(System.in);
     ihmisPelaaja ihminen;
     tietokonePelaaja tietokone;
+    
     public static void main(String[] args) {
         JFrame ikkuna = new JFrame();
         ikkuna.setSize(800, 800);
@@ -17,12 +19,9 @@ public class Kaksintaistelu {
         peli.setBackground(Color.BLACK);
         Container sisalto = ikkuna.getContentPane();
         sisalto.add(peli);
-        
-        
+        ikkuna.addKeyListener(peli);
+                
     }
-    
-   public void aloitaPeli(){
-       ihminen= new ihmisPelaaja(Integer.parseInt(lukija.nextLine()));
-       tietokone = new tietokonePelaaja(Integer.parseInt(lukija.nextLine()));
+       
    }
-}
+

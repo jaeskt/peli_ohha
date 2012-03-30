@@ -18,11 +18,8 @@ public class tietokonePelaaja extends pelaaja {
 private int vastustajanHP ;
     public tietokonePelaaja(int maara) {
         super(maara);
-
+        
     }
 
-    public int KortinValintaKriteerit() {
-        vastustajanHP =ihminen.getHP;
-        return 5;
-    }
+
 }

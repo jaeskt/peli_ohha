@@ -5,6 +5,8 @@
 
 package kaksintaistelu;
 
+import java.util.Random;
+
 /**
  *
  * @author timojaas
@@ -13,8 +15,10 @@ package kaksintaistelu;
  */
 // Timo Jääskeläinen Tehtävä #.# Viikko #
 public class kortti {
-    
+    int kortinTunniste;
     public kortti(){
+         Random arpoja = new Random(); 
+         kortinTunniste= arpoja.nextInt(5)+1;
     }
 
 }
