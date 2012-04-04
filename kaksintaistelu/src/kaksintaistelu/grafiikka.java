@@ -58,6 +58,7 @@ public class grafiikka extends JPanel implements KeyListener {
     @Override
     public void keyPressed(KeyEvent ke) {
         if (ke.getKeyCode() == 112) {
+            Kaksintaistelu.luoUusiPeli();
         } else if (ke.getKeyCode() == 113) {
         }
 

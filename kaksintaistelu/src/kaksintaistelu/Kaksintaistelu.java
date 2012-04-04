@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class Kaksintaistelu {
     Scanner lukija = new Scanner(System.in);
-    ihmisPelaaja ihminen;
-    tietokonePelaaja tietokone;
+    pelimoottori moottori;
+
     
     public static void main(String[] args) {
         JFrame ikkuna = new JFrame();
@@ -20,7 +20,12 @@ public class Kaksintaistelu {
         Container sisalto = ikkuna.getContentPane();
         sisalto.add(peli);
         ikkuna.addKeyListener(peli);
+        
+        
                 
+    }
+    public void luoUusiPeli(){
+    moottori= new pelimoottori();
     }
        
    }

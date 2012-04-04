@@ -12,28 +12,26 @@ import static org.junit.Assert.*;
  * @author timojaas
  */
 public class kortiTest {
-    
-    public kortiTest() {
-    }
+    kortti k1;
+    kortti k2;
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
 
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
+
+
     
     @Before
     public void setUp() {
+        k1 = new kortti();
+        k2 = new kortti();
     }
     
-    @After
-    public void tearDown() {
-    }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+     @Test
+     public void KortitSaavatOikenTunnisteen() {
+         int apu=0;
+         if(k1.getTunniste()<=5){
+         apu=k1.getTunniste();}
+         assertEquals(apu,k1.getTunniste());
+
+     }
+     
 }

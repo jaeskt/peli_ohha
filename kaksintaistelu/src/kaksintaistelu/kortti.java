@@ -15,10 +15,12 @@ import java.util.Random;
  */
 // Timo Jääskeläinen Tehtävä #.# Viikko #
 public class kortti {
-    int kortinTunniste;
+    private int kortinTunniste;
     public kortti(){
          Random arpoja = new Random(); 
          kortinTunniste= arpoja.nextInt(5)+1;
     }
+    public int getTunniste(){
+    return kortinTunniste;}
 
 }
