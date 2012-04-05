@@ -4,6 +4,7 @@
  */
 package kaksintaistelu;
 
+import java.awt.Image;
 import java.util.Scanner;
 
 /**
@@ -23,7 +24,12 @@ public class pelimoottori {
     private tietokonePelaaja tietokone;
 
     public pelimoottori() {
- 
-        
+        ihminen= new ihmisPelaaja(20);
+        tietokone = new tietokonePelaaja(20);                   
+    }
+    public Image getKorttiKuvat(int nro){
+    kortti kortti=ihminen.haeKorttiTietystaPaikasta(nro);
+    return kortti.getImage();
+    
     }
 }

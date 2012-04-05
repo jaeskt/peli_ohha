@@ -6,27 +6,18 @@ import javax.swing.*;
 import java.util.Scanner;
 
 public class Kaksintaistelu {
-    Scanner lukija = new Scanner(System.in);
-    pelimoottori moottori;
 
-    
     public static void main(String[] args) {
         JFrame ikkuna = new JFrame();
-        ikkuna.setSize(800, 800);
+        grafiikka Graf = new grafiikka();
+        Container container = ikkuna.getContentPane();
+        container.add(Graf);
+        ikkuna.addKeyListener(Graf);
+        ikkuna.setSize(799, 830);
         ikkuna.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         ikkuna.setVisible(true);
-        grafiikka peli = new grafiikka();
-        peli.setBackground(Color.BLACK);
-        Container sisalto = ikkuna.getContentPane();
-        sisalto.add(peli);
-        ikkuna.addKeyListener(peli);
         
-        
-                
-    }
-    public void luoUusiPeli(){
-    moottori= new pelimoottori();
-    }
        
-   }
 
+    }
+}

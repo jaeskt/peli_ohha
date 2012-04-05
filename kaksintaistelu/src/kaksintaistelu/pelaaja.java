@@ -87,4 +87,5 @@ public class pelaaja {
             this.hp = this.hp + maara;
         }
     }
+    
 }
