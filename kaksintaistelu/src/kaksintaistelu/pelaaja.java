@@ -35,57 +35,68 @@ public class pelaaja {
         this.kasiKortit = new ArrayList<kortti>();
         nostaKorttiMaaraViiteen();
     }
-/**
- * *
- * @return kyseisen pelaajan jäljellä olevat kestot
- */
+
+    /**
+     * *
+     * @return kyseisen pelaajan jäljellä olevat kestot
+     */
     public int getHP() {
         return this.hp;
     }
-/**
- * 
- * @return käsikorttienmäärä
- */
+
+    /**
+     *
+     * @return käsikorttienmäärä
+     */
     public int getKorttiMaara() {
         return this.kasiKortit.size();
     }
-/**
- * Metodi täydentää käsikortien määrän viiteen
- */
+
+    /**
+     * Metodi täydentää käsikortien määrän viiteen
+     */
     public void nostaKorttiMaaraViiteen() {
         for (int i = this.kasiKortit.size(); i < 5; i++) {
             this.kasiKortit.add(new kortti());
         }
     }
-/**
- * Metodi palauttaa halutun kortin tiedot käyttöön.
- * @param hakunumero pelaajan haluaman kortin paikka
- * @return tietyn kortin tunnistetiedon
- */
+
+    /**
+     * Metodi palauttaa halutun kortin tiedot käyttöön.
+     *
+     * @param hakunumero pelaajan haluaman kortin paikka
+     * @return tietyn kortin tunnistetiedon
+     */
     public kortti haeKorttiTietystaPaikasta(int hakunumero) {
         return this.kasiKortit.get(hakunumero);
     }
-/**
- * Metodi palauttaa tietyn kortin tunnistetiedon ja poistaa kortin kädestä.
- * @param hakunumero halutun kortin paikka pelaajan kädessä
- * @return tietyn kortin tunnistetiedot
- */
+
+    /**
+     * Metodi palauttaa tietyn kortin tunnistetiedon ja poistaa kortin kädestä.
+     *
+     * @param hakunumero halutun kortin paikka pelaajan kädessä
+     * @return tietyn kortin tunnistetiedot
+     */
     public kortti pelaaKortti(int hakunumero) {
         this.pelattavaKortti = haeKorttiTietystaPaikasta(hakunumero);
         this.kasiKortit.remove(hakunumero);
         nostaKorttiMaaraViiteen();
         return this.pelattavaKortti;
     }
-/**
- * Metodi asettaa pelaajan kestot haluttuun pisteeseen.
- * @param maara luku, jonka verran kestoja halutaan muuttaa
- */
+
+    /**
+     * Metodi asettaa pelaajan kestot haluttuun pisteeseen.
+     *
+     * @param maara luku, jonka verran kestoja halutaan muuttaa
+     */
     public void muutaKesto(int maara) {
         if (this.hp + maara >= 20) {
             this.hp = 20;
         } else {
             this.hp = this.hp + maara;
         }
+        if (hp <= 0) {
+            this.hp = 0;
+        }
     }
-    
 }

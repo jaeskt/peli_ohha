@@ -15,11 +15,17 @@ package kaksintaistelu;
  * Luokka perii myös luokan pelaaja
  */
 public class tietokonePelaaja extends pelaaja {
-private int vastustajanHP ;
+
+    private int vastustajanHP;
+    private int apuNRO;
+
     public tietokonePelaaja(int maara) {
         super(maara);
-        
+
     }
 
-
+    public kortti AIpelaaKortti(int ihminenHP) {
+        apuNRO=1;
+        return pelaaKortti(apuNRO);
+    }
 }
