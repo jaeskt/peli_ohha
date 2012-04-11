@@ -65,6 +65,54 @@ public class pelimoottori {
         Inro = korttiIhminen.getTunniste();
         samatNumerot();
         toisellaNroYksi();
+        toisellaNroKaksi();
+        toiselllaNroKolme();
+        toisellaNroNelja();
+    }
+
+    private void toisellaNroNelja() {
+        if (Inro == 4 || AInro == 4) {
+            if (Inro == 4) {
+                asetaIhminenApu1();
+            } else {
+                asetaTietokoneApu1();
+            }
+            if (apu == 5) {
+                apupelaaja1.muutaKesto(-4);
+            }
+        }
+    }
+
+    private void toiselllaNroKolme() {
+        if (Inro == 3 || AInro == 3) {
+            if (Inro == 3) {
+                asetaIhminenApu1();
+            } else {
+                asetaTietokoneApu1();
+            }
+            if (apu == 4) {
+                apupelaaja1.muutaKesto(10);
+            }
+        }
+    }
+
+    private void toisellaNroKaksi() {
+        if (Inro == 2 || AInro == 2) {
+            if (Inro == 2) {
+                asetaIhminenApu1();
+            } else {
+                asetaTietokoneApu1();
+            }
+            if (apu == 3) {
+                apupelaaja2.muutaKesto(-8);
+            } else if (apu == 4) {
+                apupelaaja2.muutaKesto(-4);
+            } else if (apu == 5) {
+                apupelaaja1.muutaKesto(-4);
+                apupelaaja2.muutaKesto(-4);
+            }
+
+        }
     }
 
     private void toisellaNroYksi() {

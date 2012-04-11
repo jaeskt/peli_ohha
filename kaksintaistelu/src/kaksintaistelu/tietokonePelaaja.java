@@ -23,8 +23,18 @@ public class tietokonePelaaja extends pelaaja {
         super(maara);
 
     }
-
+/**
+ * Metodin on tarkoitus päättää minkä kortin tietokonepelaa
+ * 
+ * Päätös tehdään vastustajan kestojen, omien kestojen ja valittavana olevien korttien perusteella
+ * @param ihminenHP saa vastustajan kestot päätöstä varten
+ * @return 
+ */
     public kortti AIpelaaKortti(int ihminenHP) {
+        vastustajanHP=ihminenHP;
+        if(vastustajanHP<=getHP()){
+            
+        }
         apuNRO=1;
         return pelaaKortti(apuNRO);
     }
