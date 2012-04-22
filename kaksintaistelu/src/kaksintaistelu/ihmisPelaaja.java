@@ -9,9 +9,9 @@ package kaksintaistelu;
  * @author timojaas
  */
 // Timo Jääskeläinen Tehtävä #.# Viikko #
-public class ihmisPelaaja extends pelaaja {
+ class IhmisPelaaja extends Pelaaja {
 
-    public ihmisPelaaja(int maara) {
+    public IhmisPelaaja(int maara) {
         super(maara);
     }
 }

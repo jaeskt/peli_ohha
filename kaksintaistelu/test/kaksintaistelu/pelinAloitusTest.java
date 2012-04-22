@@ -15,13 +15,13 @@ import static org.junit.Assert.*;
  */
 public class pelinAloitusTest {
 
-    pelaaja ihminen;
-    pelaaja tietokone;
+    Pelaaja ihminen;
+    Pelaaja tietokone;
 
     @Before
     public void setUp() {
-        ihminen = new ihmisPelaaja(35);
-        tietokone = new tietokonePelaaja(5);
+        ihminen = new IhmisPelaaja(35);
+        tietokone = new TietokonePelaaja(5);
 
     }
 

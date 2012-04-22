@@ -9,7 +9,7 @@ public class Kaksintaistelu {
 
     public static void main(String[] args) {
         JFrame ikkuna = new JFrame();
-        grafiikka Graf = new grafiikka();
+        Grafiikka Graf = new Grafiikka();
         Container container = ikkuna.getContentPane();
         container.add(Graf);
         ikkuna.addKeyListener(Graf);

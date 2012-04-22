@@ -15,12 +15,12 @@ import javax.swing.ImageIcon;
  * @since 20-3-2012
  */
 // Timo Jääskeläinen Tehtävä #.# Viikko #
-public class kortti {
+ class Kortti {
 
     private int kortinTunniste;
     Image kortti;
 
-    public kortti() {
+    public Kortti() {
         Random arpoja = new Random();
         kortinTunniste = arpoja.nextInt(5) + 1;
         ImageIcon i = new ImageIcon("E:/Users/T/ohha/kaksintaistelu/kuvat/tausta.png");

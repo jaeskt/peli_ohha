@@ -17,22 +17,22 @@ import java.util.Scanner;
  *
  */
 //Timo Jääskeläinen Viikko2 Tehtävä #.#
-public class pelimoottori {
+ class Pelimoottori {
 
     Scanner lukija = new Scanner(System.in);
-    private ihmisPelaaja ihminen;
-    pelaaja apupelaaja1;
-    pelaaja apupelaaja2;
-    private tietokonePelaaja tietokone;
-    kortti korttiIhminen;
-    kortti korttiAI;
+    private IhmisPelaaja ihminen;
+    Pelaaja apupelaaja1;
+    Pelaaja apupelaaja2;
+    private TietokonePelaaja tietokone;
+    Kortti korttiIhminen;
+    Kortti korttiAI;
     int AInro;
     int Inro;
     int apu;
 
-    public pelimoottori() {
-        ihminen = new ihmisPelaaja(20);
-        tietokone = new tietokonePelaaja(20);
+    public Pelimoottori() {
+        ihminen = new IhmisPelaaja(20);
+        tietokone = new TietokonePelaaja(20);
     }
 
     public Image getKorttiKuvat(int nro) {

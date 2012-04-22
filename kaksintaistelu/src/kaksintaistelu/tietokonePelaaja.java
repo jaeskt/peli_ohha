@@ -12,14 +12,17 @@ package kaksintaistelu;
  * Luokan ohjaa tietokonevastustajan käytöstä.
  *
  * Tänne ohjelmoidaan kuinka tietokonepelaaja toimii erillaisissa tilanteissa.
- * Luokka perii myös luokan pelaaja
+ * Luokka perii myös luokan Pelaaja
  */
-public class tietokonePelaaja extends pelaaja {
+ class TietokonePelaaja extends Pelaaja {
 
     private int vastustajanHP;
     private int apuNRO;
+    private Kortti kortti;
 
-    public tietokonePelaaja(int maara) {
+    
+
+    public TietokonePelaaja(int maara) {
         super(maara);
 
     }
@@ -30,10 +33,13 @@ public class tietokonePelaaja extends pelaaja {
  * @param ihminenHP saa vastustajan kestot päätöstä varten
  * @return 
  */
-    public kortti AIpelaaKortti(int ihminenHP) {
+    public Kortti AIpelaaKortti(int ihminenHP) {
+
         vastustajanHP=ihminenHP;
         if(vastustajanHP<=getHP()){
-            
+          for(int i=0;i<kasiKortit.size();i++){
+            kortti=haeKorttiTietystaPaikasta(i);
+        } 
         }
         apuNRO=1;
         return pelaaKortti(apuNRO);

@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * @param kasiKortit pitää korttien paikkoja selvillä
  * @param pelattavaKortti helpottaa kohteena olevan kortin käyttöä
  */
-public class pelaaja {
+ class Pelaaja {
 
     /**
      * hp on kestot, jotka pelaajalla on. kasiKortit on lista, joka pitää
@@ -27,12 +27,12 @@ public class pelaaja {
      * muistamiseen.
      */
     private int hp;
-    private ArrayList<kortti> kasiKortit;
-    private kortti pelattavaKortti;
+     ArrayList<Kortti> kasiKortit;
+    private Kortti pelattavaKortti;
 
-    public pelaaja(int maara) {
+    public Pelaaja(int maara) {
         muutaKesto(maara);
-        this.kasiKortit = new ArrayList<kortti>();
+        this.kasiKortit = new ArrayList<Kortti>();
         nostaKorttiMaaraViiteen();
     }
 
@@ -57,7 +57,7 @@ public class pelaaja {
      */
     public void nostaKorttiMaaraViiteen() {
         for (int i = this.kasiKortit.size(); i < 5; i++) {
-            this.kasiKortit.add(new kortti());
+            this.kasiKortit.add(new Kortti());
         }
     }
 
@@ -67,7 +67,7 @@ public class pelaaja {
      * @param hakunumero pelaajan haluaman kortin paikka
      * @return tietyn kortin tunnistetiedon
      */
-    public kortti haeKorttiTietystaPaikasta(int hakunumero) {
+    public Kortti haeKorttiTietystaPaikasta(int hakunumero) {
         return this.kasiKortit.get(hakunumero);
     }
 
@@ -77,7 +77,7 @@ public class pelaaja {
      * @param hakunumero halutun kortin paikka pelaajan kädessä
      * @return tietyn kortin tunnistetiedot
      */
-    public kortti pelaaKortti(int hakunumero) {
+    public Kortti pelaaKortti(int hakunumero) {
         this.pelattavaKortti = haeKorttiTietystaPaikasta(hakunumero);
         this.kasiKortit.remove(hakunumero);
         nostaKorttiMaaraViiteen();

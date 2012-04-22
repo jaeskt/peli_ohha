@@ -5,12 +5,6 @@
 	</TreeState>
 	<TreeState name="DiagramNavigator" viewX="0" viewY="0">
 		<ExpandedPath>DiagramNavigator</ExpandedPath>
-		<ExpandedPath>DiagramNavigator,UML Diagrams</ExpandedPath>
-		<ExpandedPath>DiagramNavigator,Requirements Capturing</ExpandedPath>
-		<ExpandedPath>DiagramNavigator,Database Modeling</ExpandedPath>
-		<ExpandedPath>DiagramNavigator,SysML</ExpandedPath>
-		<ExpandedPath>DiagramNavigator,Others</ExpandedPath>
-		<SelectedPath>DiagramNavigator</SelectedPath>
 	</TreeState>
 	<TreeState name="ClassBrowser" viewX="0" viewY="0">
 		<ExpandedPath>ClassBrowser</ExpandedPath>

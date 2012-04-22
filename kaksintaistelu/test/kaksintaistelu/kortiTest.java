@@ -12,8 +12,8 @@ import static org.junit.Assert.*;
  * @author timojaas
  */
 public class kortiTest {
-    kortti k1;
-    kortti k2;
+    Kortti k1;
+    Kortti k2;
 
 
 
@@ -21,8 +21,8 @@ public class kortiTest {
     
     @Before
     public void setUp() {
-        k1 = new kortti();
-        k2 = new kortti();
+        k1 = new Kortti();
+        k2 = new Kortti();
     }
     
      @Test
