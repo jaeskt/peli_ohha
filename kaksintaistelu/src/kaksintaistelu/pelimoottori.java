@@ -5,7 +5,6 @@
 package kaksintaistelu;
 
 import java.awt.Image;
-import java.util.Scanner;
 
 /**
  *
@@ -17,33 +16,51 @@ import java.util.Scanner;
  *
  */
 //Timo Jääskeläinen Viikko2 Tehtävä #.#
- class Pelimoottori {
+public class Pelimoottori {
 
-    Scanner lukija = new Scanner(System.in);
-    private IhmisPelaaja ihminen;
+    IhmisPelaaja ihminen;
     Pelaaja apupelaaja1;
     Pelaaja apupelaaja2;
-    private TietokonePelaaja tietokone;
+    TietokonePelaaja tietokone;
     Kortti korttiIhminen;
     Kortti korttiAI;
     int AInro;
     int Inro;
     int apu;
 
+    /**
+     * Kun ohjelman käynnissä olessa luodaan uusipeli, niin Pelimoottori luo
+     * tietokonevastuksen ja pelaajan.
+     */
     public Pelimoottori() {
         ihminen = new IhmisPelaaja(20);
         tietokone = new TietokonePelaaja(20);
     }
 
+    /**
+     *
+     * @param nro kortin paikka tunniste, joste pelaaja haluaa pelata sen
+     * @return palauttaa Grafiikalle halutun kuvan piirtämistä varten.
+     */
     public Image getKorttiKuvat(int nro) {
         korttiIhminen = ihminen.haeKorttiTietystaPaikasta(nro);
         return korttiIhminen.getImage();
     }
 
+    /**
+     *
+     * @return palauttaa tietokoneen pelaaman kortin kuvan Grafiikalle.
+     */
     public Image getKorttiKuvaAI() {
         return korttiAI.getImage();
     }
 
+    /**
+     * Metodi hoitaa ylimmäntason vuoron aikana tapahtuvasta korttien
+     * pelaamisesta.
+     *
+     * @param nro ihmisen pelaaman kortin paikkatieto.
+     */
     public void pelaaKortti(int nro) {
         korttiIhminen = ihminen.pelaaKortti(nro);
         korttiAI = tietokone.AIpelaaKortti(ihminen.getHP());
@@ -51,16 +68,26 @@ import java.util.Scanner;
 
     }
 
+    /**
+     *
+     * @return palauttaa ihmisen kestot.
+     */
     int getIhmHP() {
         return ihminen.getHP();
     }
 
+    /**
+     *
+     * @return palauttaa tietokoneen kestot.
+     */
     int getAIHP() {
         return tietokone.getHP();
     }
 
+    /**
+     * Metodi vertaa tietokoneen ja ihmisen pelaamien korttien tunnisteita.
+     */
     public void korttienKasittely() {
-
         AInro = korttiAI.getTunniste();
         Inro = korttiIhminen.getTunniste();
         samatNumerot();
@@ -70,6 +97,9 @@ import java.util.Scanner;
         toisellaNroNelja();
     }
 
+    /**
+     * Metodi hoitaa tapahtuman, jos toisen pelaajan kortintunniste on neljä.
+     */
     private void toisellaNroNelja() {
         if (Inro == 4 || AInro == 4) {
             if (Inro == 4) {
@@ -83,6 +113,10 @@ import java.util.Scanner;
         }
     }
 
+    /**
+     * Metodi hoitaa tapahtuman, jos toisella pelaajalla kortintunniste on
+     * kolme.
+     */
     private void toiselllaNroKolme() {
         if (Inro == 3 || AInro == 3) {
             if (Inro == 3) {
@@ -96,6 +130,10 @@ import java.util.Scanner;
         }
     }
 
+    /**
+     * Metodi hoitaa tapahtuman, jos toisella pelaajalla kortintunniste on
+     * kaksi.
+     */
     private void toisellaNroKaksi() {
         if (Inro == 2 || AInro == 2) {
             if (Inro == 2) {
@@ -115,6 +153,9 @@ import java.util.Scanner;
         }
     }
 
+    /**
+     * Metodi hoitaa tapahtuman, jos toisella pelaajalla kortintunniste on yksi.
+     */
     private void toisellaNroYksi() {
         if (Inro == 1 || AInro == 1) {
 

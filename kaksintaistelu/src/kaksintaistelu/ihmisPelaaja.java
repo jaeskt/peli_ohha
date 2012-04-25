@@ -1,16 +1,23 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package kaksintaistelu;
 
 /**
  *
- * @author timojaas
+ *  *
+ * @author Timo Jääskeläinen @versio 0.02
+ * @since 21-3-2012
+ *
+ * Luokka on olemassa ihmispelaajaa varten, jos innostuisin laajentamaan tätä ja
+ * keksimään uusia ominaisuuksia, jotka eivät koskisi tietokonepelaajaa.
+ *
+ * Luokka perii myös luokan Pelaaja
  */
-// Timo Jääskeläinen Tehtävä #.# Viikko #
- class IhmisPelaaja extends Pelaaja {
 
+public class IhmisPelaaja extends Pelaaja {
+    /**
+     *
+     * @param maara Kestopisteiden maara, jonka pelaaja saa luonnin yhteydessä
+     */
     public IhmisPelaaja(int maara) {
         super(maara);
     }

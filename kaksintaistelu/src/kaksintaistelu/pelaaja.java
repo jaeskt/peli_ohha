@@ -19,17 +19,21 @@ import java.util.ArrayList;
  * @param kasiKortit pitää korttien paikkoja selvillä
  * @param pelattavaKortti helpottaa kohteena olevan kortin käyttöä
  */
- class Pelaaja {
+public class Pelaaja {
 
     /**
-     * hp on kestot, jotka pelaajalla on. kasiKortit on lista, joka pitää
-     * muistissa pelaajan kortit. pelattavaKortti on helpottava apuväline kortin
-     * muistamiseen.
+     * @param  hp on kestot, jotka pelaajalla on. 
+     * @param kasiKortit on lista, joka pitää muistissa pelaajan kortit. 
+     * @param pelattavaKortti on helpottava apuväline kortin muistamiseen.
      */
     private int hp;
-     ArrayList<Kortti> kasiKortit;
+    ArrayList<Kortti> kasiKortit;
     private Kortti pelattavaKortti;
 
+    /**
+     * Luo uuden pelaajan ja luo tälle uuden korttivaraston.
+     * @param maara uuden pelaajan kestojen määrä
+     */
     public Pelaaja(int maara) {
         muutaKesto(maara);
         this.kasiKortit = new ArrayList<Kortti>();
@@ -37,7 +41,7 @@ import java.util.ArrayList;
     }
 
     /**
-     * *
+     *
      * @return kyseisen pelaajan jäljellä olevat kestot
      */
     public int getHP() {
@@ -46,7 +50,7 @@ import java.util.ArrayList;
 
     /**
      *
-     * @return käsikorttienmäärä
+     * @return käsikorttien määrä
      */
     public int getKorttiMaara() {
         return this.kasiKortit.size();

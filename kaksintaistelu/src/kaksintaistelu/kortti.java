@@ -13,17 +13,46 @@ import javax.swing.ImageIcon;
  * @author timojaas
  * @version 0.01
  * @since 20-3-2012
+ *
+ * Korttiluokka huolehtii uusien korttien tekemisestä. Luokka palauttaa olemassa
+ * olevien korttien kuvan ja tunnisteen.
  */
-// Timo Jääskeläinen Tehtävä #.# Viikko #
- class Kortti {
+public class Kortti {
 
     private int kortinTunniste;
     Image kortti;
+    ImageIcon i;
 
+    /**
+     * Luo uuden sattumanvaraisen kortin pelaajalle/tietokoneelle
+     */
     public Kortti() {
         Random arpoja = new Random();
         kortinTunniste = arpoja.nextInt(5) + 1;
-        ImageIcon i = new ImageIcon("E:/Users/T/ohha/kaksintaistelu/kuvat/tausta.png");
+        kuvanAsetus(kortinTunniste);
+    }
+
+    /**
+     * Luo halutun tunnisteen omaavan kortin. 
+     * Estää luomasta korttia, jonka tunniste tieto ei ole välillä 1-5.
+     * @param apu halutun kortin tunniste (testaukseen)
+     */
+    public Kortti(int apu) {
+        int i = apu;
+        if (apu > 5 || apu < 1) {
+            i = 1;
+        }
+        kortinTunniste = i;
+        kuvanAsetus(kortinTunniste);
+    }
+
+    /**
+     * asettaa kortille oikean kuvan
+     *
+     * @param kortinTunniste Kertoo mikä kuva kortille pitää laittaa.
+     *
+     */
+    private void kuvanAsetus(int kortinTunniste) {
         if (kortinTunniste == 1) {
             i = new ImageIcon("E:/Users/T/ohha/kaksintaistelu/kuvat/1.png");
         } else if (kortinTunniste == 2) {
@@ -38,9 +67,19 @@ import javax.swing.ImageIcon;
         kortti = i.getImage();
     }
 
+    /**
+     *
+     * @return Kortin tunniste, jotä ohjelma käyttää tapahtuman tarkastelussa
+     */
     public int getTunniste() {
         return kortinTunniste;
     }
-    public Image getImage(){
-    return kortti;}
+
+    /**
+     *
+     * @return Kortin kuva piirtämistä varten
+     */
+    public Image getImage() {
+        return kortti;
+    }
 }
