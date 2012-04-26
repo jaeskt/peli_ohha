@@ -11,17 +11,28 @@ import java.util.Random;
  * @author Timo Jääskeläinen @versio 0.02
  * @since 21-3-2012
  *
- * Luokan ohjaa tietokonevastustajan käytöstä.
+ * Luoka ohjaa tietokonevastustajan käytöstä.
  *
  * Tänne ohjelmoidaan kuinka tietokonepelaaja toimii erillaisissa tilanteissa.
  * Luokka perii myös luokan Pelaaja
  */
 public class TietokonePelaaja extends Pelaaja {
-
+/**
+ * Parametrissä on pelaajan kestot, jota käytetään päätöksen teossa.
+ */
     private int vastustajanHP;
+    /**
+     * Parametri, joka auttaa tietokoneen toimintaa.
+     */
     private int apuNRO;
+    /**
+     * @see kaksintaistelu.Kortti
+     */
     private Kortti kortti;
-
+/**
+ * Luo uuden vastustajan pelaajalle.
+ * @param maara tietokone pelaajan kestot.
+ */
     public TietokonePelaaja(int maara) {
         super(maara);
 
@@ -33,10 +44,10 @@ public class TietokonePelaaja extends Pelaaja {
      * Päätös tehdään vastustajan kestojen, omien kestojen ja valittavana
      * olevien korttien perusteella
      *
-     * @param ihminenHP saa vastustajan kestot päätöstä varten
-     * @return
+     * @param ihminenHP saa vastustajan kestot päätöstä varten.
+     * @return palauttaa pelattavan kortin paikan.
      */
-    public Kortti AIpelaaKortti(int ihminenHP) {
+    public Kortti pelaaKorttiAI(int ihminenHP) {
         Random arpoja = new Random();
         apuNRO = arpoja.nextInt(5);
         vastustajanHP = ihminenHP;

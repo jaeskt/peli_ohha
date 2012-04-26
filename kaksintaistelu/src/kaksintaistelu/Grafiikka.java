@@ -13,24 +13,53 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.font.TextAttribute;
 import java.text.AttributedString;
-import java.util.Scanner;
 
 public class Grafiikka extends JPanel implements KeyListener {
 
-    Scanner lukija = new Scanner(System.in);
-
+    /**
+     * Taustan asettamiseen käytetty parametri
+     */
     Image tausta;
+    /**
+     * Ihmisen pelaaman kortin asettamiseen.
+     */
     Image apukuva;
+    /**
+     * Tietokoneen pelaaman kortin asettaminen.
+     */
     Image apukuvaAI;
-    boolean kaynnissa;
-    boolean vuoro;
-    boolean keskikuva;
-    boolean pause;
+    /**
+     * Muistaa onko peli käynnissä vai ei.
+     */
+    private boolean kaynnissa;
+    /**
+     * Pitää huolta että montaa korttia ei voi pelata samanaikaisesti.
+     */
+    private boolean vuoro;
+    /**
+     * Parametrin avulla pidetään huoli, että pelatut kortit eivät näy tietyissä tilanteissa.
+     */
+    private boolean keskikuva;
+    /**
+ * Parametri estää korttien pelaamisen, kun pelaaja on HELP-ruudussa.
+ */
+    private boolean pause;
+    /**
+ * @see kaksintaistelu.Pelimoottori
+ */
     Pelimoottori peli;
-    String teksti;
-    Font font1;
-    AttributedString attributedString;
-  
+    /**
+ * Parametri, jota käytetään halutun tekstin muistamiseen.
+ */
+    private String teksti;
+    /**
+ * Parametri, fontin valintaan.
+ */
+    private Font font1;
+    /**
+ * Parametri, tekstien kirjoittamiseen.
+ */
+    private AttributedString attributedString;
 
     /**
      * Luo uuden taustan ohjelman käynnistämisen yhteydessä.
@@ -40,12 +69,12 @@ public class Grafiikka extends JPanel implements KeyListener {
         kaynnissa = false;
         keskikuva = false;
         font1 = new Font("Algerian", Font.PLAIN, 30);
-        
+
 
     }
 
     /**
-     * Paint hoitaa kuvien vaihtamisen ja tekstien kirjoittamisen pelinedetessä.
+     * Paint hoitaa kuvien vaihtamisen ja tekstien kirjoittamisen pelin edetessä.
      *
      * @param g Grafiikan käyttämä parametri
      */
@@ -65,7 +94,6 @@ public class Grafiikka extends JPanel implements KeyListener {
             g.drawString(attributedString.getIterator(), 680, 90);
             for (int i = 0; i < 5; i++) {
                 g.drawImage(peli.getKorttiKuvat(i), 20 + 150 * i, 600, null);
-
             }
             if (keskikuva == true && peli.getAIHP() > 0 && peli.getIhmHP() > 0 && kaynnissa == true) {
                 g.drawImage(apukuva, 150, 270, null);
@@ -76,8 +104,6 @@ public class Grafiikka extends JPanel implements KeyListener {
             } else if (keskikuva == true && kaynnissa == true) {
                 tarkistaLopputilanne(g);
             }
-
-
         }
         if (pause == false) {
             tekstienKirjoitus(g);
@@ -85,7 +111,8 @@ public class Grafiikka extends JPanel implements KeyListener {
     }
 
     /**
-     * Metodi tarkistaa mihin pelipäättyi.
+     * Metodi tarkistaa päätyykö peli ja mikä oli siihen syy.
+     * Vaihtaa myös oikean taustakuvan.
      *
      * @param g Grafiikan käyttämä parametri
      */
@@ -94,7 +121,6 @@ public class Grafiikka extends JPanel implements KeyListener {
             ImageIcon i = new ImageIcon("E:/Users/T/ohha/kaksintaistelu/kuvat/tasapeli.png");
             tausta = i.getImage();
             g.drawImage(tausta, 0, 0, null);
-            asetaNormiTausta();;
             teksti = "Tasapeli!";
             tekstinFonttiPerus();
             g.drawString(attributedString.getIterator(), 310, 350);
@@ -102,16 +128,15 @@ public class Grafiikka extends JPanel implements KeyListener {
             ImageIcon i = new ImageIcon("E:/Users/T/ohha/kaksintaistelu/kuvat/havio.png");
             tausta = i.getImage();
             g.drawImage(tausta, 0, 0, null);
-            asetaNormiTausta();
         } else if (peli.getAIHP() <= 0) {
             ImageIcon i = new ImageIcon("E:/Users/T/ohha/kaksintaistelu/kuvat/voitto.png");
             tausta = i.getImage();
             g.drawImage(tausta, 0, 0, null);
             asetaNormiTausta();
             teksti = "Voitit!";
-            tekstinFonttiPerus();
             g.drawString(attributedString.getIterator(), 310, 350);
         }
+         asetaNormiTausta();;
         kaynnissa = false;
     }
 
@@ -125,8 +150,8 @@ public class Grafiikka extends JPanel implements KeyListener {
     }
 
     /**
-     * Metodin tarkoitus on siistiä koodia. Luokka myös vaihtaa kirjoitettavan
-     * tekstin sisällön.
+     * Metodi vaihtaa kirjoitettavan tekstin sisällön.
+     * Metodin tarkoitus on myös siistiä koodia.
      */
     private void tekstinFonttiPerus() {
         attributedString = new AttributedString(teksti);
@@ -134,7 +159,7 @@ public class Grafiikka extends JPanel implements KeyListener {
     }
 
     /**
-     * Metodi hoitaa pysyvien tekstien kirjoittamisen.
+     * Metodi hoitaa muuttumattominen tekstien kirjoittamisen.
      *
      * @param g Grafiikan käyttämä parametri
      */
@@ -224,17 +249,19 @@ public class Grafiikka extends JPanel implements KeyListener {
     /**
      * Käynnistää uuden pelin ohjelman sisällä.
      */
-    private void kaynnistys() {
+     void kaynnistys() {
         peli = new Pelimoottori();
         kaynnissa = true;
         vuoro = true;
+        keskikuva = false;
 
     }
 
     /**
      * Huolehtii kuvista, jotka pelaaja ja tietokone pelaavat vuoronaikana.
+     * Ilmoittaa myös pelimoottorille, mimkä korttipaikan numeroa pelaaja painoi.
      *
-     * @param nro
+     * @param nro Pelaajan painaman korttipaikan numero.
      */
     public void vuoroApu(int nro) {
         apukuva = peli.getKorttiKuvat(nro);
@@ -250,5 +277,8 @@ public class Grafiikka extends JPanel implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+    }
+    public boolean getVuoro(){
+        return vuoro;
     }
 }

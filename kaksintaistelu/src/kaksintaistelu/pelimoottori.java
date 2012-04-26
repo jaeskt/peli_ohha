@@ -18,15 +18,42 @@ import java.awt.Image;
 //Timo Jääskeläinen Viikko2 Tehtävä #.#
 public class Pelimoottori {
 
+    /**
+     * @see kaksintaistelu.IhmisPelaaja
+     */
     IhmisPelaaja ihminen;
-    Pelaaja apupelaaja1;
+    /**
+     * Talentaa toisen pelaajan tiedot, jotta tapahtumien selvitys helpottuu.
+     */
+    private Pelaaja apupelaaja1;
+    /**
+     * Talentaa toisen pelaajan tiedot, jotta tapahtumien selvitys helpottuu.
+     */
     Pelaaja apupelaaja2;
+    /**
+     * @see kaksintaistelu.TietokonePelaaja
+     */
     TietokonePelaaja tietokone;
+    /**
+     * Ihmisen pelaama kortti.
+     */
     Kortti korttiIhminen;
+    /**
+     * Tietokoneen pelaama kortti.
+     */
     Kortti korttiAI;
-    int AInro;
-    int Inro;
-    int apu;
+    /**
+     * Tietokoneen pelaaman kortin tunnistenumero.
+     */
+    private int nroAI;
+    /**
+     * Ihmisen pelaaman kortin tunnistenumero.
+     */
+   private int nroI;
+    /**
+     * Asettaa toisen pelaajan kortintunnistenumeron tänne tapahtumien selvittämistä vasrten.
+     */
+    private int apu;
 
     /**
      * Kun ohjelman käynnissä olessa luodaan uusipeli, niin Pelimoottori luo
@@ -39,7 +66,7 @@ public class Pelimoottori {
 
     /**
      *
-     * @param nro kortin paikka tunniste, joste pelaaja haluaa pelata sen
+     * @param nro kortin paikka tunniste, josta pelaaja haluaa pelata kortin
      * @return palauttaa Grafiikalle halutun kuvan piirtämistä varten.
      */
     public Image getKorttiKuvat(int nro) {
@@ -63,13 +90,13 @@ public class Pelimoottori {
      */
     public void pelaaKortti(int nro) {
         korttiIhminen = ihminen.pelaaKortti(nro);
-        korttiAI = tietokone.AIpelaaKortti(ihminen.getHP());
+        korttiAI = tietokone.pelaaKorttiAI(ihminen.getHP());
         korttienKasittely();
 
     }
 
     /**
-     *
+     * Hakee ihmisen kestot ja palauttaa ne eteenpäin.
      * @return palauttaa ihmisen kestot.
      */
     int getIhmHP() {
@@ -77,7 +104,7 @@ public class Pelimoottori {
     }
 
     /**
-     *
+     * Hakee tietokoneen kestot ja palauttaa ne eteenpäin.
      * @return palauttaa tietokoneen kestot.
      */
     int getAIHP() {
@@ -88,8 +115,8 @@ public class Pelimoottori {
      * Metodi vertaa tietokoneen ja ihmisen pelaamien korttien tunnisteita.
      */
     public void korttienKasittely() {
-        AInro = korttiAI.getTunniste();
-        Inro = korttiIhminen.getTunniste();
+        nroAI = korttiAI.getTunniste();
+        nroI = korttiIhminen.getTunniste();
         samatNumerot();
         toisellaNroYksi();
         toisellaNroKaksi();
@@ -101,8 +128,8 @@ public class Pelimoottori {
      * Metodi hoitaa tapahtuman, jos toisen pelaajan kortintunniste on neljä.
      */
     private void toisellaNroNelja() {
-        if (Inro == 4 || AInro == 4) {
-            if (Inro == 4) {
+        if (nroI == 4 || nroAI == 4) {
+            if (nroI == 4) {
                 asetaIhminenApu1();
             } else {
                 asetaTietokoneApu1();
@@ -118,14 +145,14 @@ public class Pelimoottori {
      * kolme.
      */
     private void toiselllaNroKolme() {
-        if (Inro == 3 || AInro == 3) {
-            if (Inro == 3) {
+        if (nroI == 3 || nroAI == 3) {
+            if (nroI == 3) {
                 asetaIhminenApu1();
             } else {
                 asetaTietokoneApu1();
             }
             if (apu == 4) {
-                apupelaaja1.muutaKesto(10);
+                apupelaaja2.muutaKesto(5);
             }
         }
     }
@@ -135,14 +162,14 @@ public class Pelimoottori {
      * kaksi.
      */
     private void toisellaNroKaksi() {
-        if (Inro == 2 || AInro == 2) {
-            if (Inro == 2) {
+        if (nroI == 2 || nroAI == 2) {
+            if (nroI == 2) {
                 asetaIhminenApu1();
             } else {
                 asetaTietokoneApu1();
             }
             if (apu == 3) {
-                apupelaaja2.muutaKesto(-8);
+                apupelaaja2.muutaKesto(-9);
             } else if (apu == 4) {
                 apupelaaja2.muutaKesto(-4);
             } else if (apu == 5) {
@@ -157,9 +184,9 @@ public class Pelimoottori {
      * Metodi hoitaa tapahtuman, jos toisella pelaajalla kortintunniste on yksi.
      */
     private void toisellaNroYksi() {
-        if (Inro == 1 || AInro == 1) {
+        if (nroI == 1 || nroAI == 1) {
 
-            if (Inro == 1) {
+            if (nroI == 1) {
                 asetaIhminenApu1();
             } else {
                 asetaTietokoneApu1();
@@ -173,28 +200,34 @@ public class Pelimoottori {
             }
         }
     }
-
+/**
+ * Metodi asettaa ihmisen apupelaaja2:ksi ja kortin tunnistenumeron @param apu:n.
+ */
     private void asetaTietokoneApu1() {
         apupelaaja2 = ihminen;
-        apu = Inro;
+        apu = nroI;
         apupelaaja1 = tietokone;
     }
-
+/**
+ * Metodi asettaa tietokoneen apupelaaja2:ksi ja kortin tunnistenumeron @param apu:n.
+ */
     private void asetaIhminenApu1() {
         apupelaaja1 = ihminen;
-        apu = AInro;
+        apu = nroAI;
         apupelaaja2 = tietokone;
     }
-
+/**
+ * Metodi hoitaa tapahtumat jos molemmat pelaavat saman kortin.
+ */
     private void samatNumerot() {
-        if (Inro == AInro) {
-            if (Inro == 1) {
+        if (nroI == nroAI) {
+            if (nroI == 1) {
                 ihminen.muutaKesto(-4);
                 tietokone.muutaKesto(-4);
-            } else if (Inro == 3) {
+            } else if (nroI == 3) {
                 ihminen.muutaKesto(10);
                 tietokone.muutaKesto(10);
-            } else if (Inro == 5) {
+            } else if (nroI == 5) {
                 ihminen.muutaKesto(-100);
                 tietokone.muutaKesto(-100);
             }

@@ -15,32 +15,17 @@ import static org.junit.Assert.*;
  */
 public class pelinAloitusTest {
 
-    Pelaaja ihminen;
-    Pelaaja tietokone;
-
+    Grafiikka testiG;
+    
     @Before
     public void setUp() {
-        ihminen = new IhmisPelaaja(35);
-        tietokone = new TietokonePelaaja(5);
-
+        testiG = new Grafiikka();
+        testiG.kaynnistys();
+            
     }
-
-    @Test
-    public void pelaajienKestot() {
-        assertEquals(20, ihminen.getHP());
-        assertEquals(5, tietokone.getHP());
-        /**
-         * tarkistaa että kestot eivät voi mennä ylitse 30 tarkistaa että antaa
-         * toiselle pelaajalle oikeat kestot.
-         */
-    }
-
-    @Test
-    public void korttienLukumaaraOikea() {
-        assertEquals(5, tietokone.getKorttiMaara());
-        assertEquals(5, ihminen.getKorttiMaara());
-        /**
-         * tarkistaa että molemmilla on alussa viisi korttia.
-         */
-    }
+        @Test
+     public void vuoroPysähtyy() {
+            testiG.vuoroApu(3);
+   assertEquals(false, testiG.getVuoro());       
+}
 }

@@ -15,19 +15,20 @@ import java.util.ArrayList;
  * Luokka pitää yllä pelaajan tietoja.
  *
  * Luokka muuttaa kestoja ja huolehtii myös samalla korttimäärästä.
- * @param hp pelaajan kestopisteet
- * @param kasiKortit pitää korttien paikkoja selvillä
- * @param pelattavaKortti helpottaa kohteena olevan kortin käyttöä
  */
 public class Pelaaja {
 
     /**
-     * @param  hp on kestot, jotka pelaajalla on. 
-     * @param kasiKortit on lista, joka pitää muistissa pelaajan kortit. 
-     * @param pelattavaKortti on helpottava apuväline kortin muistamiseen.
+     * Parametri, joka muistaa pelaajan keston.
      */
     private int hp;
+       /**
+     * Parametri, jossa säilytetään pelaajalla käytössä olevat kortit.
+     */
     ArrayList<Kortti> kasiKortit;
+       /**
+     * Parametri pitää muistissa pelaajan pelaaman kortin.
+     */
     private Kortti pelattavaKortti;
 
     /**
@@ -41,51 +42,51 @@ public class Pelaaja {
     }
 
     /**
-     *
+     * Metdo palauttaa pelaajan kestot.
      * @return kyseisen pelaajan jäljellä olevat kestot
      */
     public int getHP() {
-        return this.hp;
+        return hp;
     }
 
     /**
-     *
+     * Metodi palauttaa korttien määrän.
      * @return käsikorttien määrä
      */
     public int getKorttiMaara() {
-        return this.kasiKortit.size();
+        return kasiKortit.size();
     }
 
     /**
      * Metodi täydentää käsikortien määrän viiteen
      */
     public void nostaKorttiMaaraViiteen() {
-        for (int i = this.kasiKortit.size(); i < 5; i++) {
-            this.kasiKortit.add(new Kortti());
+        for (int i = kasiKortit.size(); i < 5; i++) {
+            kasiKortit.add(new Kortti());
         }
     }
 
     /**
-     * Metodi palauttaa halutun kortin tiedot käyttöön.
+     * Metodi palauttaa tietystä paikasta kortin.
      *
      * @param hakunumero pelaajan haluaman kortin paikka
-     * @return tietyn kortin tunnistetiedon
+     * @return Palauttaa tietyn kortin
      */
     public Kortti haeKorttiTietystaPaikasta(int hakunumero) {
-        return this.kasiKortit.get(hakunumero);
+        return kasiKortit.get(hakunumero);
     }
 
     /**
      * Metodi palauttaa tietyn kortin tunnistetiedon ja poistaa kortin kädestä.
      *
      * @param hakunumero halutun kortin paikka pelaajan kädessä
-     * @return tietyn kortin tunnistetiedot
+     * @return Palauttaa tietyn kortin
      */
     public Kortti pelaaKortti(int hakunumero) {
-        this.pelattavaKortti = haeKorttiTietystaPaikasta(hakunumero);
-        this.kasiKortit.remove(hakunumero);
+        pelattavaKortti = haeKorttiTietystaPaikasta(hakunumero);
+        kasiKortit.remove(hakunumero);
         nostaKorttiMaaraViiteen();
-        return this.pelattavaKortti;
+        return pelattavaKortti;
     }
 
     /**
@@ -94,13 +95,13 @@ public class Pelaaja {
      * @param maara luku, jonka verran kestoja halutaan muuttaa
      */
     public void muutaKesto(int maara) {
-        if (this.hp + maara >= 20) {
-            this.hp = 20;
+        if (hp + maara >= 20) {
+            hp = 20;
         } else {
-            this.hp = this.hp + maara;
+            hp = hp + maara;
         }
         if (hp <= 0) {
-            this.hp = 0;
+            hp = 0;
         }
     }
 }

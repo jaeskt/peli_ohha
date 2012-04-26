@@ -18,9 +18,17 @@ import javax.swing.ImageIcon;
  * olevien korttien kuvan ja tunnisteen.
  */
 public class Kortti {
-
+    /**
+     * Parametri pitää huolta mikä luodun kortin tunniste on.
+     */
     private int kortinTunniste;
-    Image kortti;
+        /**
+     * Parametri pitää huolen luodun kortin kuvan säilyttämisestä
+     */
+    Image korttiKuva;
+       /**
+     * Parametrin avulla kortille asetetaan oikea kuva.
+     */
     ImageIcon i;
 
     /**
@@ -47,7 +55,7 @@ public class Kortti {
     }
 
     /**
-     * asettaa kortille oikean kuvan
+     * Asettaa kortille oikean kuvan.
      *
      * @param kortinTunniste Kertoo mikä kuva kortille pitää laittaa.
      *
@@ -64,11 +72,11 @@ public class Kortti {
         } else if (kortinTunniste == 5) {
             i = new ImageIcon("E:/Users/T/ohha/kaksintaistelu/kuvat/5.png");
         }
-        kortti = i.getImage();
+        korttiKuva = i.getImage();
     }
 
     /**
-     *
+     * Palauttaa halutun olemassa olevan kortin tunnisteen.
      * @return Kortin tunniste, jotä ohjelma käyttää tapahtuman tarkastelussa
      */
     public int getTunniste() {
@@ -76,10 +84,10 @@ public class Kortti {
     }
 
     /**
-     *
+     * Metodi palauttaa olemassa olevan kortin kuvan.
      * @return Kortin kuva piirtämistä varten
      */
     public Image getImage() {
-        return kortti;
+        return korttiKuva;
     }
 }
